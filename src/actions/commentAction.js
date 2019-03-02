@@ -1,16 +1,11 @@
 import axios from 'axios';
-import store from "../store";
-import { CREATE_COMMENT } from "./types";
+import { getPost } from "./postAction";
 
-export const createComment = (data) => dispatch => {
+export const createComment = (id, comment) => dispatch => {
+    const data = { postId: id, body: comment };
     axios.post(`https://simple-blog-api.crew.red/comments`, data)
-        .then(data => {
-            let comments = store.getState().post.comments;
-            comments.push(data.data);
-            dispatch({
-                type: CREATE_COMMENT,
-                payload: comments
-            })
+        .then(() => {
+            dispatch(getPost(id))
         })
         .catch(err => {
             console.log(err)
