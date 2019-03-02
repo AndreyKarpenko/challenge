@@ -14,7 +14,10 @@ export class Details extends React.Component{
     };
 
     componentDidMount() {
-        this.props.getPost(this.props.location.state.id);
+        if(this.props.location.state)
+            this.props.getPost(this.props.location.state.id);
+        else
+            this.props.history.push('/');
     };
 
     componentWillReceiveProps(nextProps, nextContext) {

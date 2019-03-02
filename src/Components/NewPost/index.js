@@ -17,7 +17,9 @@ export class NewPost extends React.Component{
     };
 
     componentDidMount() {
-        if(this.props.location.state)
+        if(!this.props.location.state && this.props.location.pathname !== '/new_post')
+            this.props.history.push('/');
+        else if(this.props.location.state)
             this.props.getPost(this.props.location.state.id);
         this.setState({
             route: this.props.location.pathname
