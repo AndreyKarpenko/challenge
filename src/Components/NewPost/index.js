@@ -58,7 +58,8 @@ export class NewPost extends React.Component{
                 date: new Date(),
                 errorText: false
             }, () => {
-                this.props.createPost(this.state, this.props.history);
+                const data = {title: this.state.title, name: this.state.name, body: this.state.body, date: this.state.date};
+                this.props.createPost(data, this.props.history);
             });
         } else {
             this.setState({
@@ -78,7 +79,8 @@ export class NewPost extends React.Component{
                 date: new Date(),
                 errorText: false
             }, () => {
-                this.props.updatePost(this.props.location.state.id, this.state, this.props.history);
+                const data = {title: this.state.title, name: this.state.name, body: this.state.body, date: this.state.date};
+                this.props.updatePost(this.props.location.state.id, data, this.props.history);
             });
         } else {
             this.setState({

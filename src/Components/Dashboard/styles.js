@@ -15,3 +15,7 @@ export const Button = styled.button`
     background-color: #44874f;
 `;
 
+export const EmptyText = styled.h1`
+    margin: 20px;
+`;
+

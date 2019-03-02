@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Post from '../Post';
 import { getAllPosts } from '../../actions/postAction';
-import { Button, Wrapper } from './styles';
+import { Button, Wrapper, EmptyText } from './styles';
 
 export class Dashboard extends React.Component{
 
@@ -32,6 +32,7 @@ export class Dashboard extends React.Component{
         return(
             <Wrapper>
                 {
+                    posts.length ?
                     posts.map(item => (
                         <Post
                             key={item.id}
@@ -39,7 +40,10 @@ export class Dashboard extends React.Component{
                             body={item.body}
                             id={item.id}
                         />
-                    ))
+                    )) :
+                        <EmptyText>
+                            You don't have any post yet
+                        </EmptyText>
                 }
                 <Button
                     onClick={this.goToNewPostPage}

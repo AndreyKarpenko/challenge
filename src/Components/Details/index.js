@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { getPost } from '../../actions/postAction';
 import { createComment } from '../../actions/commentAction';
-import { Wrapper, Title, Body, DetailsWrapper, Button, TextArea, Comment } from './styles';
+import { Wrapper, Title, Body, DetailsWrapper, Button, TextArea, Comment, EmptyText } from './styles';
 
 export class Details extends React.Component{
 
@@ -84,6 +84,7 @@ export class Details extends React.Component{
                                     Comments:
                                 </div>
                                 {
+                                    post.comments.length ?
                                     post.comments.map((item, index) => (
                                         <Comment
                                             key={index}
@@ -92,7 +93,10 @@ export class Details extends React.Component{
                                                 item.body
                                             }
                                         </Comment>
-                                    ))
+                                    )) :
+                                        <EmptyText>
+                                            You don't have any comments yet
+                                        </EmptyText>
                                 }
                             </Wrapper>
                         </React.Fragment> : null
