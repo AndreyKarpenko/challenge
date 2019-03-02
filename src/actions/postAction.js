@@ -45,7 +45,7 @@ export const createPost = (data, history) => dispatch => {
         })
 };
 
-export const updatePost = (id, data, history) => dispatch => {
+export const updatePost = (id, data, history) => () => {
     axios.put(`https://simple-blog-api.crew.red/posts/${id}`, data)
         .then(() => {
             history.push('/');

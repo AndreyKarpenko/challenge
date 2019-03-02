@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Post from '../Post';
 import { getAllPosts } from '../../actions/postAction';
+import { Button, Wrapper } from './styles';
 
 export class Dashboard extends React.Component{
 
@@ -29,7 +30,7 @@ export class Dashboard extends React.Component{
         const { posts } = this.state;
 
         return(
-            <div>
+            <Wrapper>
                 {
                     posts.map(item => (
                         <Post
@@ -40,12 +41,12 @@ export class Dashboard extends React.Component{
                         />
                     ))
                 }
-                <button
+                <Button
                     onClick={this.goToNewPostPage}
                 >
                     add new post
-                </button>
-            </div>
+                </Button>
+            </Wrapper>
         )
     }
 }
